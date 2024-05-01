@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <title>Bookmark Form</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            background-image: url("fingerprint.jpg");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: auto;
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .error-message {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div class="container form-container">
+    <h2 class="text-center mb-4">Bookmark Form</h2>
+    <!-- Bookmark Form -->
+    <form id="bookmarkForm" onsubmit="return validateForm()">
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" class="form-control" id="username" placeholder="Enter your username" required>
+            <small class="error-message" id="usernameError"></small>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+            <small class="error-message" id="emailError"></small>
+        </div>
+        <div class="form-group">
+            <label for="bookmarkTitle">Bookmark Title:</label>
+            <input type="text" class="form-control" id="bookmarkTitle" placeholder="Enter bookmark title" required>
+            <small class="error-message" id="bookmarkTitleError"></small>
+        </div>
+        <div class="form-group">
+            <label for="bookmarkURL">Bookmark URL:</label>
+            <input type="text" class="form-control" id="bookmarkURL" placeholder="Enter bookmark URL" required>
+            <small class="error-message" id="bookmarkURLError"></small>
+        </div>
+        <div class="form-group">
+            <label for="fileInput">Add File:</label>
+            <input type="file"  class="form-control-file" id="fileInput">
+            <small class="error-message" id="fileError"></small>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script>
+    function validateForm() {
+        document.getElementById("usernameError").innerHTML = "";
+        document.getElementById("emailError").innerHTML = "";
+        document.getElementById("bookmarkTitleError").innerHTML = "";
+        document.getElementById("bookmarkURLError").innerHTML = "";
+        document.getElementById("fileError").innerHTML = "";
+        var username = document.getElementById("username").value;
+        var email = document.getElementById("email").value;
+        var bookmarkTitle = document.getElementById("bookmarkTitle").value;
+        var bookmarkURL = document.getElementById("bookmarkURL").value;
+        var fileInput = document.getElementById("fileInput").value;
+        var usernameRegex = /^[a-zA-Z]+$/;
+        if (username.trim() === "" || !usernameRegex.test(username)) {
+            document.getElementById("usernameError").innerText = "Invalid username format";
+            return false; // Prevent form submission
+        } 
+        else {
+            document.getElementById("usernameError").innerText = "";
+        }
+        if (username.length < 6) {
+            document.getElementById("usernameError").innerHTML = "Username must be at least 6 characters.";
+            return false;
+        }
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            document.getElementById("emailError").innerHTML = "Invalid email format.";
+            return false;
+        }
+        if (bookmarkTitle.length < 10) {
+            document.getElementById("bookmarkTitleError").innerHTML = "Bookmark title must be at least 10 characters.";
+            return false;
+        }
+        var urlRegex = /^(ftp|http|https):\/\/[^ "]+$/;
+        if (!urlRegex.test(bookmarkURL)) {
+            document.getElementById("bookmarkURLError").innerHTML = "Invalid URL format.";
+            return false;
+        }
+        if (fileInput === "") {
+            document.getElementById("fileError").innerHTML = "Please choose a file.";
+            return false;
+        }
+        alert("Form submitted successfully! Redirecting to success page...");
+        window.location.href = "index.html";
+        return false;
+    }
+</script>
+</body>
+</html>
+

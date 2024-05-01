@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personnel Details</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h2>Personnel Details</h2>
+    <table>
+       
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+             
+                <th>Department</th>
+            </tr>
+       
+            <tr>
+                <td>John Doe</td>
+                <td>25</td>
+                <td>Male</td>
+                <td>IT</td>
+            </tr>
+            <tr>
+                <td>Jane Smith</td>
+                <td>28</td>
+                <td>Female</td>
+                <td>HR</td>
+            </tr>
+            <tr>
+                <td>Michael Johnson</td>
+                <td>23</td>
+                <td>Male</td>
+                <td>Finance</td>
+            </tr>
+            <!-- Add more rows as needed -->
+        
+    </table>
+
+
+
+    <h2>Simple Form</h2>
+    <form id="myForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+            <option value="">Select</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select><br><br>
+
+        <label>Age:</label><br>
+        <input type="radio" id="age1" name="age" value="under18" required>
+        Under 18<br>
+        <input type="radio" id="age2" name="age" value="18to30">
+        <label for="age2">18 to 30</label><br>
+        <input type="radio" id="age3" name="age" value="over30">
+        <label for="age3">Over 30</label><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <h2>Calendar Application</h2>
+    <label for="datepicker">Select Date: </label>
+    <input type="text" id="datepicker">
+
+    <script>
+        $(function() {
+            $("#datepicker").datepicker();
+        });
+    </script>
+</body>
+</html>
